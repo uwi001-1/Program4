@@ -17,7 +17,15 @@ Notes:
 *********************************************************************/
 void displayMenu(string szMenuName, string szChoicesArr[], int iChoices)
 {
-    cout << "displayMenu not implemented yet" << endl; 
+    cout << szMenuName << endl;
+    cout << szBreakMessage << endl;
+    for(int i =0; i <iChoices-1; i++)
+    {
+        cout << i+1 << ". ";
+        cout << szChoicesArr[i] << endl;
+    }
+    cout << "-1. " << szChoicesArr[iChoices-1] << endl;
+    cout << szBreakMessage << endl;
 }
 
 /*********************************************************************
