@@ -43,7 +43,32 @@ Notes:
 *********************************************************************/
 void addAdventurer(Adventurer*& roster, int& iSize, int& iCapacity)
 {
-    cout << "addAdventurer not implemented yet" << endl; 
+    string szName, szClass;
+    int iLevel, iHP;
+
+    if(iCapacity == iSize)
+    {
+        iCapacity += 10;
+    }
+
+    cout << "Enter adventurer's name: ";
+    cin >> szName;
+    roster[iSize].setName(szName);
+
+    cout << "Enter adventurer's class: ";
+    cin >> szClass;
+    roster[iSize].setClass(szClass);
+
+    cout << "Enter adventurer's level: ";
+    cin >> iLevel;
+    roster[iSize].setLevel(iLevel);
+
+    cout << "Enter adventurer's hit points: ";
+    cin >> iHP;
+    roster[iSize].setHP(iHP);
+
+    cout << "Adventurer added successfully!" << endl;
+    iSize++;
 }
 
 /*********************************************************************
@@ -60,7 +85,11 @@ Notes:
 *********************************************************************/
 void viewAdventurers(Adventurer* roster, int iSize)
 {
-    cout << "viewAdventurers not implemented yet" << endl; 
+    for(int i=0; i<iSize; i++)
+    {
+        roster[i].displayAdventurer();
+    }
+
 }
 
 /*********************************************************************
