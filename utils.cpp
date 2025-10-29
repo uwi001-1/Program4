@@ -48,15 +48,23 @@ void addAdventurer(Adventurer*& roster, int& iSize, int& iCapacity)
 
     if(iCapacity == iSize)
     {
+        Adventurer* newArray = new Adventurer[iCapacity + 10];
+        for(int i=0; i < iCapacity; i++)
+        {
+            newArray[i] = roster[i];
+        }
+        delete[] roster;
+
+        roster = newArray;
         iCapacity += 10;
     }
 
     cout << "Enter adventurer's name: ";
-    cin >> szName;
+    getline(cin,szName);
     roster[iSize].setName(szName);
 
     cout << "Enter adventurer's class: ";
-    cin >> szClass;
+    getline(cin,szClass);
     roster[iSize].setClass(szClass);
 
     cout << "Enter adventurer's level: ";
@@ -125,7 +133,10 @@ Notes:
 *********************************************************************/
 void insertionSortByLevel(Adventurer* roster, int iSize)
 {
-    cout << "insertionSortByLevel not implemented yet" << endl; 
+    for(int i =1; i<iSize; i++)
+    {
+        //LEFT
+    } 
 }
 
 /*********************************************************************
@@ -143,7 +154,13 @@ Notes:
 *********************************************************************/
 int linearSearchByName(Adventurer* roster, int iSize, const string& szTargetName)
 {
-    cout << "linearSearchByName not implemented yet" << endl; 
+    for(int i=0; i<iSize; i++)
+    {
+        if(roster[i].getName() == szTargetName)
+        {
+            return i;
+        }
+    } 
     return -1;
 }
 
