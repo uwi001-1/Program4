@@ -60,6 +60,7 @@ void addAdventurer(Adventurer*& roster, int& iSize, int& iCapacity)
     }
 
     cout << "Enter adventurer's name: ";
+    cin.ignore();
     getline(cin,szName);
     roster[iSize].setName(szName);
 
@@ -74,6 +75,8 @@ void addAdventurer(Adventurer*& roster, int& iSize, int& iCapacity)
     cout << "Enter adventurer's hit points: ";
     cin >> iHP;
     roster[iSize].setHP(iHP);
+
+    // roster[iSize] = Adventurer(szName, szClass, iLevel, iHitPoints);
 
     cout << "Adventurer added successfully!" << endl;
     iSize++;
@@ -115,7 +118,22 @@ Notes:
 *********************************************************************/
 void selectionSortByHP(Adventurer* roster, int iSize)
 {
-    cout << "selectionSortByHP not implemented yet" << endl; 
+    int iMaxIndex;
+   for(int iStart = 0; iStart < iSize - 1; iStart++)
+    {
+        iMaxIndex = iStart;
+      
+        for(int iIndex = iStart; iIndex < iSize; iIndex++)
+        {
+            if(roster[iIndex].getHP() > roster[iMaxIndex].getHP())
+            {
+                iMaxIndex = iIndex;
+            }
+        }
+        Adventurer temp = roster[iStart];
+        roster[iStart] = roster[iMaxIndex];
+        roster[iMaxIndex] = temp;     
+    } 
 }
 
 /*********************************************************************
@@ -188,7 +206,25 @@ Notes:
 *********************************************************************/
 int binarySearchByHP(Adventurer* roster, int iSize, int iTargetHP)
 {
-    cout << "binarySearchByHP not implemented yet" << endl;
+    int iFirst, iLast, iMiddle;
+    iFirst = 0;
+    iLast = iSize - 1;
+    while(iFirst < iLast)
+    {
+        iMiddle = (iFirst + iLast) / 2;
+        if(roster[iMiddle].getHP() == iTargetHP)
+        {
+            return iMiddle;
+        }
+        else if(roster[iMiddle].getHP()< iTargetHP)
+        {
+            iFirst = iMiddle + 1;
+        }
+        else
+        {
+            iLast = iMiddle - 1;
+        }
+    }
     return -1;
 }
 
