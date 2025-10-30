@@ -135,7 +135,16 @@ void insertionSortByLevel(Adventurer* roster, int iSize)
 {
     for(int i =1; i<iSize; i++)
     {
-        //LEFT
+        Adventurer Key = roster[i];
+
+        int iLastSorted = i -1;
+
+        while(iLastSorted >= 0 && roster[iLastSorted].getLevel() > Key.getLevel())
+        {
+            roster[iLastSorted + 1] = roster[iLastSorted];
+            iLastSorted--;
+        }
+        roster[iLastSorted + 1] = Key;
     } 
 }
 
@@ -186,5 +195,5 @@ int binarySearchByHP(Adventurer* roster, int iSize, int iTargetHP)
 // Extra credit (You must document yourself)
 void insertionSortByLevelWithStats(Adventurer* roster, int iSize, int& iComparisons, int& iSwaps)
 {
-	cout << "Not implemented" << endl;
+	//for(int i=1; i<iSize; i++)
 }
