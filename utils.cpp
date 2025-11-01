@@ -229,7 +229,48 @@ int binarySearchByHP(Adventurer* roster, int iSize, int iTargetHP)
 }
 
 // Extra credit (You must document yourself)
+/*********************************************************************
+void insertionSortByLevelWithStats(Adventurer* roster, int iSize, int& iComparisons, int& iSwaps)
+Purpose:
+    Sorts the roster by level using insertion sort and also tracks the number of comparisons and swaps performed during the sort.
+Parameters:
+    I/O Adventurer* roster     Dynamic roster of adventurers
+    I   int iSize              Current number of adventurers
+    I/O int& iComparisons      Count each time there is comparison between two adventurer levels
+    I/O int& iSwaps            Count each time there is moving/assigning of an adventurer to a different position in the array
+Return Value:
+    -
+Notes:
+    This function CANNOT use pre-made sorting libraries
+	Sort in ascending order
+*********************************************************************/
 void insertionSortByLevelWithStats(Adventurer* roster, int iSize, int& iComparisons, int& iSwaps)
 {
-	//for(int i=1; i<iSize; i++)
+	iComparisons = 0;
+    iSwaps = 0;
+
+    for(int i =1; i<iSize; i++)
+    {
+        //Storing an adventurer in a temporary variable - Key
+        Adventurer Key = roster[i];
+        iSwaps++;
+
+        int iLastSorted = i -1;
+
+        while(iLastSorted >= 0)
+        {
+            //Compare two adventure levels
+            iComparisons++;
+            if(roster[iLastSorted].getLevel() > Key.getLevel())
+            {
+                //Moving an adventurer to a new index
+                roster[iLastSorted + 1] = roster[iLastSorted];
+                iSwaps++;
+                iLastSorted--;
+            }
+        }
+        //Placing the temporary adventurer back into the array
+        roster[iLastSorted + 1] = Key;
+        iSwaps++;
+    }
 }

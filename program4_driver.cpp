@@ -29,7 +29,7 @@ int main()
         "Sort adventurers by level",
         "Sort adventurers by hit points",
         "Search for an adventurer by name",
-        "Search for an adventurer by level",
+        "Search for an adventurer by hit points",
         "Sort by level with statistics (Extra Credit)",
         "Exit"
     };
